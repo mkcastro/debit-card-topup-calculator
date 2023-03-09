@@ -14,8 +14,7 @@ rl.question('Enter your cash amount: ', cash => {
                     const totalAmountToSend = parseFloat(shortfall) + parseFloat(creditCardBill) + parseFloat(transferFee);
 
                     if (totalAmountToSend <= parseFloat(cash)) {
-                        console.log(`Sending ${totalAmountToSend.toFixed(2)} to debit card.`);
-                        console.log(`Paying ${creditCardBill} from debit card to credit card.`);
+                        console.log(`You need to send ${totalAmountToSend.toFixed(2)} to debit card.`);
                     } else {
                         console.log(`Insufficient funds. Cannot transfer ${totalAmountToSend.toFixed(2)} from cash to debit card.`);
                     }
