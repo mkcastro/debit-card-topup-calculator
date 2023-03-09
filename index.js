@@ -9,16 +9,18 @@ rl.question('Enter your cash amount: ', cash => {
     rl.question('Enter your debit card balance: ', debitCardBalance => {
         rl.question('Enter your debit card maintaining balance: ', debitCardMaintainingBalance => {
             rl.question('Enter your credit card bill: ', creditCardBill => {
-                const shortfall = debitCardMaintainingBalance - debitCardBalance;
-                const totalAmountToSend = parseFloat(shortfall) + parseFloat(creditCardBill);
+                rl.question('Enter the transfer fee: ', transferFee => {
+                    const shortfall = debitCardMaintainingBalance - debitCardBalance;
+                    const totalAmountToSend = parseFloat(shortfall) + parseFloat(creditCardBill) + parseFloat(transferFee);
 
-                if (totalAmountToSend <= parseFloat(cash)) {
-                    console.log(`Sending ${totalAmountToSend.toFixed(2)} to debit card.`);
-                    console.log(`Paying ${creditCardBill} from debit card to credit card.`);
-                } else {
-                    console.log(`Insufficient funds. Cannot transfer ${totalAmountToSend.toFixed(2)} from cash to debit card.`);
-                }
-                rl.close();
+                    if (totalAmountToSend <= parseFloat(cash)) {
+                        console.log(`Sending ${totalAmountToSend.toFixed(2)} to debit card.`);
+                        console.log(`Paying ${creditCardBill} from debit card to credit card.`);
+                    } else {
+                        console.log(`Insufficient funds. Cannot transfer ${totalAmountToSend.toFixed(2)} from cash to debit card.`);
+                    }
+                    rl.close();
+                });
             });
         });
     });
